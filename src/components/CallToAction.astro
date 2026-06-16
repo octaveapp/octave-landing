@@ -1,0 +1,89 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<a href="/signup" class:list={['cta-button', className]}>
+  <slot />
+</a>
+
+<style>
+  .cta-button {
+    display: inline-block;
+    border-radius: 2rem;
+    padding: 1.2rem 4rem;
+    font-size: 2rem;
+    font-family: 'Work Sans', sans-serif !important;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .cta-button:hover {
+    text-decoration: none;
+  }
+  .cta-button.green {
+    background-color: #fff;
+    border: 3px solid #6cc566;
+    color: #6cc566;
+  }
+  .cta-button.green:hover {
+    background-color: #6cc566;
+    border: 3px solid #fff;
+    color: #fff;
+  }
+  .cta-button.blue {
+    background-color: #008dd5;
+    border: 3px solid #008dd5;
+    color: #fff;
+  }
+  .cta-button.blue:hover {
+    background-color: #fff;
+    border: 3px solid #008dd5;
+    color: #008dd5;
+  }
+  .cta-button.white {
+    background-color: #fff;
+    border: 3px solid #008dd5;
+    color: #008dd5;
+  }
+  .cta-button.white:hover {
+    background-color: #008dd5;
+    border: 3px solid #fff;
+    color: #fff;
+  }
+  @media screen and (max-width: 768px) {
+    .cta-button.small-green {
+      background-color: #fff;
+      border: 3px solid #6cc566;
+      color: #6cc566;
+    }
+    .cta-button.small-green:hover {
+      background-color: #6cc566;
+      border: 3px solid #fff;
+      color: #fff;
+    }
+    .cta-button.small-blue {
+      background-color: #008dd5;
+      border: 3px solid #008dd5;
+      color: #fff;
+    }
+    .cta-button.small-blue:hover {
+      background-color: #fff;
+      border: 3px solid #008dd5;
+      color: #008dd5;
+    }
+    .cta-button.small-white {
+      background-color: #fff;
+      border: 3px solid #008dd5;
+      color: #008dd5;
+    }
+    .cta-button.small-white:hover {
+      background-color: #008dd5;
+      border: 3px solid #fff;
+      color: #fff;
+    }
+  }
+</style>

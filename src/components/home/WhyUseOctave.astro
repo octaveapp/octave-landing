@@ -1,0 +1,54 @@
+---
+import Section from '../Section.astro';
+import Paragraph from '../Paragraph.astro';
+import Oli from '../Oli.astro';
+---
+
+<Section>
+  <h3>Pourquoi utiliser Octave</h3>
+  <Paragraph>
+    Avec Octave, vous gagnez un temps considérable sur l'organisation de vos
+    repas qui deviennent plus variés et équilibrés
+  </Paragraph>
+  <div class="grid-12 has-gutter">
+    <ul class="col-5-small-all why-list">
+      <Oli>
+        Vous renouvelez constamment vos repas avec de nouvelles idées de
+        recettes
+      </Oli>
+      <Oli>
+        Vous gagnez un temps précieux que vous consacrez à ce qui compte
+        vraiment
+      </Oli>
+      <Oli>
+        Vous gérez vos courses avec une seule application disponible à tout
+        moment
+      </Oli>
+    </ul>
+    <div class="col-2 small-hide"></div>
+    <ul class="col-5-small-all why-list">
+      <Oli>
+        Vous mangez plus sainement grâce à notre sélection de recettes et
+        ingrédients
+      </Oli>
+      <Oli>
+        Vous n'achetez que ce dont vous avez besoin et faites des économies
+      </Oli>
+      <Oli>
+        Vous apprenez et vous améliorez sans cesse en cuisine et nutrition
+      </Oli>
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .why-list {
+    padding-left: 0;
+    list-style: none;
+  }
+  @media screen and (max-width: 768px) {
+    .why-list {
+      margin: 0;
+    }
+  }
+</style>

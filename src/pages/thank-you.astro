@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import Paragraph from '../components/Paragraph.astro';
+---
+
+<Layout
+  title="Merci de votre inscription | Octave"
+  description="Confirmation de l'inscription à Octave"
+  keywords="Famille, Manger sain, Equilibre alimentaire, Application"
+  hideCallToAction={true}
+>
+  <Section>
+    <h3>
+      Votre inscription est confirmée ! Merci
+      <span role="img" aria-label="thank-you">🙏</span>
+    </h3>
+    <Paragraph>
+      Votre inscription à nos listes de diffusion et à la bêta d'Octave est
+      confirmée. Nous vous avons envoyé quelques informations complémentaires
+      dans votre boîte mail. Merci de votre confiance. L'équipe Octave
+    </Paragraph>
+  </Section>
+</Layout>

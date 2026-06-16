@@ -1,0 +1,46 @@
+---
+interface Props {
+  icon?: 'green' | 'red' | 'blue' | 'check';
+}
+
+const { icon = 'green' } = Astro.props;
+
+const dotColors: Record<string, string> = {
+  green: '#6cc566',
+  red: '#EE6C4D',
+  blue: '#008DD5',
+};
+---
+
+<li class="oli">
+  {icon === 'check' ? (
+    <img class="check-img" src="/images/checked.svg" alt="coché" />
+  ) : (
+    <div class="dot" style={`background-color: ${dotColors[icon]}`}></div>
+  )}
+  <div class="text">
+    <slot />
+  </div>
+</li>
+
+<style>
+  .oli {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .oli .text {
+    margin-left: 5rem;
+  }
+  .dot {
+    position: absolute;
+    top: 20%;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+  }
+  .check-img {
+    position: absolute;
+    width: 3rem;
+    left: 0.7rem;
+  }
+</style>

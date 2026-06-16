@@ -1,0 +1,61 @@
+---
+interface Props {
+  img: string;
+  alt: string;
+  reverse?: boolean;
+}
+
+const { img, alt, reverse = false } = Astro.props;
+---
+
+<div class="grid-12 has-gutter image-list" class:list={[{ reverse }]}>
+  <div class="col-4-small-all img-col">
+    <img src={img} alt={alt} />
+  </div>
+  <div class="col-1 small-hide between"></div>
+  <div class="col-7-small-all list-col">
+    <ul>
+      <slot />
+    </ul>
+  </div>
+</div>
+
+<style>
+  .image-list {
+    margin-top: 5rem;
+  }
+  .image-list .img-col {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .image-list .img-col img {
+    border-radius: 2rem;
+  }
+  @media screen and (max-width: 768px) {
+    .image-list .img-col img {
+      width: 80%;
+    }
+  }
+  .image-list .list-col {
+    display: flex;
+    align-items: center;
+  }
+  .image-list .list-col ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .image-list .list-col ul li {
+    margin-bottom: 4rem;
+  }
+  @media screen and (min-width: 768px) {
+    .image-list.reverse .img-col {
+      order: 1;
+    }
+    .image-list.reverse .between {
+      order: 0;
+    }
+    .image-list.reverse .list-col {
+      order: -1;
+    }
+  }
+</style>

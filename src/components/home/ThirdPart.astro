@@ -1,0 +1,79 @@
+---
+import Section from '../Section.astro';
+import Paragraph from '../Paragraph.astro';
+import Oli from '../Oli.astro';
+import ImageList from './ImageList.astro';
+---
+
+<Section>
+  <h3>Les fonctionnalités d'Octave</h3>
+  <Paragraph>
+    Avec Octave, nous voulons proposer le meilleur de la technologie pour vous
+    aider à relever les défis du quotidien. Notre application vous propose des
+    fonctionnalités innovantes pour une alimentation plus heureuse.
+  </Paragraph>
+  <ImageList
+    img="/images/feature-usage-1.jpg"
+    alt="Une personne utilisant son téléphone dans un environnement de travail studieux et agréable"
+  >
+    <Oli>
+      Organisation souple des repas avec soit un planning hebdomadaire, soit
+      une simple liste de repas
+    </Oli>
+    <Oli>
+      Intelligence artificielle qui adapte en permanence ses propositions à
+      vos souhaits et goûts
+    </Oli>
+    <Oli>
+      De nombreuses recettes sélectionnées et expliquées par une
+      diététicienne-nutritionniste
+    </Oli>
+    <Oli>
+      Partage des recettes choisies avec les membres de la famille pour avoir
+      la validation ou d'autres propositions de recettes
+    </Oli>
+  </ImageList>
+  <ImageList
+    img="/images/feature-usage-2.jpg"
+    alt="Une personne tenant un panier de courses rempli de fruits et légumes sains"
+    reverse
+  >
+    <Oli icon="red">
+      Connexion aux principales plateformes de courses en ligne afin de
+      commander plus rapidement et simplement
+    </Oli>
+    <Oli icon="red">
+      Liste de courses disponible en permanence sur votre application lorsque
+      vous êtes en magasin
+    </Oli>
+    <Oli icon="red">
+      Informations sur la qualité de votre panier et conseils sur les produits
+      qui le constituent pour faire les bons choix
+    </Oli>
+    <Oli icon="red">
+      Ajout de produits - alimentaires ou non-alimentaires - à votre liste
+      pour gérer la totalité de vos courses via Octave
+    </Oli>
+  </ImageList>
+  <ImageList
+    img="/images/feature-usage-3.jpg"
+    alt="Une tablette sur un plan de travail dans la cuisine entourée de fruits et légumes, d'un couteau et d'huile d'olive"
+  >
+    <Oli icon="blue">
+      Disponibilité des recettes dans l'application avec les étapes pas à pas
+      expliquées simplement et clairement
+    </Oli>
+    <Oli icon="blue">
+      Possibilité de s'adapter à l'imprévu en demandant le remplacement d'une
+      recette à la volée
+    </Oli>
+    <Oli icon="blue">
+      Assistance à l'organisation en cuisine avec possibilité de définir des
+      rappels et notifications pour cuisiner plus efficacement
+    </Oli>
+    <Oli icon="blue">
+      Accès à des conseils de cuisine afin de maîtriser les bases essentielles
+      de la préparation, cuisson et conservation des aliments
+    </Oli>
+  </ImageList>
+</Section>

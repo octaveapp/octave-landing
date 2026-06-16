@@ -1,0 +1,246 @@
+---
+import Section from '../Section.astro';
+import Paragraph from '../Paragraph.astro';
+
+const screens = [
+  {
+    src: '/images/oneplus-planning.jpg',
+    alt: "La recette de courge butternut - lentilles - quinoa sélectionnée par un utilisateur dans l'application Octave avec ses différentes caractéristiques",
+  },
+  {
+    src: '/images/oneplus-shopping.jpg',
+    alt: 'La liste de courses intelligente dans Octave avec la possibilité de faire ses courses en drive chez Carrefour',
+  },
+  {
+    src: '/images/oneplus-cooking.jpg',
+    alt: 'Le détail de la recette de courge butternut aux lentilles-quinoa sélectionnée par un utilisateur dans Octave avec toutes les étapes de la réalisation',
+  },
+];
+
+const items = [
+  {
+    iconName: 'calendar',
+    title: 'Planifier vos repas en un clin d’oeil',
+    text: "Avant de faire vos courses, vous choisissez vos repas en quelques minutes. Octave vous fait des propositions de recettes adaptées à vos goûts, besoins, envies et contraintes. Vous sélectionnez ce que vous voulez manger en veillant à l'équilibre de votre alimentation.",
+  },
+  {
+    iconName: 'cart',
+    title: 'Acheter les bons produits',
+    text: "Octave génère votre liste de courses en fonction des recettes et quantités nécessaires. Vous finalisez cette liste en sélectionnant les produits que vous préférez. Enfin si votre magasin favori propose le drive ou la livraison, Octave passe votre commande.",
+  },
+  {
+    iconName: 'cooking',
+    title: 'Cuisiner en toute sérénité',
+    text: "Avec vos recettes et tous les ingrédients, vous abordez la semaine en toute sérénité. Au moment de préparer vos repas, chaque recette est décrite pas à pas dans l'application. Un changement de dernière minute ? Octave propose une alternative adaptée.",
+  },
+];
+---
+
+<Section>
+  <h3>Un quotidien plus simple avec Octave</h3>
+  <Paragraph>
+    La clé d'une alimentation saine repose sur l'organisation et
+    l'inspiration. Pas facile quand on ne dispose pas d'assez de temps !
+    Octave vous aide simplement et efficacement à y parvenir en quelques
+    étapes.
+  </Paragraph>
+  <div class="grid-12 has-gutter day-to-day" id="day-to-day">
+    <div class="phone-container col-4-small-all">
+      <button class="arrow-left" id="dtd-prev" aria-label="Précédent"></button>
+      {screens.map((screen, i) => (
+        <img
+          class="phone"
+          data-screen={i}
+          src={screen.src}
+          alt={screen.alt}
+          style={i === 0 ? '' : 'display:none'}
+        />
+      ))}
+      <button class="arrow-right" id="dtd-next" aria-label="Suivant"></button>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-7-small-10">
+      <ul class="dtd-list">
+        {items.map((item, i) => (
+          <li class="dtd-item" data-item={i} class:list={[{ selected: i === 0 }]}>
+            <div class="grid-8 has-gutter">
+              <div class="col-1">
+                <div class="wrapper">
+                  <div class="icon-container">
+                    <span class={'icon-' + item.iconName}></span>
+                  </div>
+                  <div class="border">&nbsp;</div>
+                </div>
+              </div>
+              <div class="col-7">
+                <h4>{item.title}</h4>
+                <p>{item.text}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .phone-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .phone-container .phone {
+    width: 100%;
+  }
+  .phone-container .arrow-left,
+  .phone-container .arrow-right {
+    outline: none;
+    display: none;
+    border: none;
+    width: 2rem;
+    height: 4.2rem;
+    background-repeat: no-repeat;
+  }
+  .phone-container .arrow-left {
+    background-image: url('/images/arrow-left.png');
+  }
+  .phone-container .arrow-right {
+    background-image: url('/images/arrow-right.png');
+  }
+  @media screen and (max-width: 768px) {
+    .phone-container {
+      margin-bottom: 4rem;
+    }
+    .phone-container .phone {
+      width: 70%;
+    }
+    .phone-container .arrow-left,
+    .phone-container .arrow-right {
+      display: block;
+    }
+  }
+
+  .dtd-list {
+    padding-left: 0;
+    list-style: none;
+  }
+  @media screen and (max-width: 768px) {
+    .dtd-list {
+      margin: 0;
+    }
+  }
+
+  .dtd-item {
+    margin-bottom: 5rem;
+    cursor: pointer;
+  }
+  .dtd-item h4 {
+    color: #6cc566;
+  }
+  .dtd-item .wrapper {
+    margin-top: -0.8rem;
+    height: 100%;
+    position: relative;
+  }
+  .dtd-item .icon-container {
+    position: relative;
+    z-index: 1;
+    border-radius: 1rem 1rem 1rem 0;
+    text-align: center;
+    padding: 1rem 0.6rem;
+    width: 6rem;
+    height: 5rem;
+  }
+  .dtd-item .icon-container [class^='icon-']::before {
+    color: #6cc566;
+    font-size: 3rem;
+  }
+  .dtd-item .border {
+    z-index: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 3rem;
+    width: 1rem;
+    border-radius: 0 0 1rem 1rem;
+    background-color: #6cc566;
+    height: 0;
+  }
+  @media screen and (min-width: 768px) {
+    .dtd-item.selected .icon-container {
+      background-color: #6cc566;
+    }
+    .dtd-item.selected .icon-container [class^='icon-']::before {
+      color: #fff;
+    }
+    .dtd-item.selected .border {
+      height: 100%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .dtd-item h4 {
+      margin: 0 0 1rem 0;
+    }
+    .dtd-item .wrapper {
+      margin-top: 0;
+    }
+    .dtd-item .icon-container {
+      padding: 0;
+      width: auto;
+    }
+  }
+</style>
+
+<script>
+  const TIME_TO_READ = 3000;
+  const MOBILE_BREAK_POINT = 769;
+
+  function setupDayToDay() {
+    const root = document.getElementById('day-to-day');
+    if (!root) return;
+
+    const screens = Array.from(root.querySelectorAll<HTMLImageElement>('.phone[data-screen]'));
+    const items = Array.from(root.querySelectorAll<HTMLLIElement>('.dtd-item[data-item]'));
+    const prevBtn = document.getElementById('dtd-prev');
+    const nextBtn = document.getElementById('dtd-next');
+    let currentIdx = 0;
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+
+    function showScreen(idx: number) {
+      currentIdx = idx;
+      screens.forEach((img, i) => {
+        img.style.display = i === idx ? '' : 'none';
+      });
+      items.forEach((item, i) => {
+        item.classList.toggle('selected', i === idx);
+      });
+    }
+
+    function next() {
+      showScreen(currentIdx === screens.length - 1 ? 0 : currentIdx + 1);
+    }
+
+    function previous() {
+      showScreen(currentIdx === 0 ? screens.length - 1 : currentIdx - 1);
+    }
+
+    items.forEach((item, i) => {
+      item.addEventListener('mouseenter', () => {
+        if (intervalId) clearInterval(intervalId);
+        showScreen(i);
+      });
+    });
+
+    prevBtn?.addEventListener('click', previous);
+    nextBtn?.addEventListener('click', next);
+
+    if (window.outerWidth >= MOBILE_BREAK_POINT) {
+      intervalId = setInterval(next, TIME_TO_READ);
+    }
+  }
+
+  setupDayToDay();
+  document.addEventListener('astro:after-swap', setupDayToDay);
+</script>

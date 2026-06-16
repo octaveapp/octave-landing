@@ -1,0 +1,82 @@
+---
+import CallToAction from './CallToAction.astro';
+import Menu from './Menu.astro';
+
+interface Props {
+  siteTitle: string;
+  hideCallToAction?: boolean;
+}
+
+const { siteTitle, hideCallToAction = false } = Astro.props;
+---
+
+<header class="site-header">
+  <Menu />
+  <div class="container auto-grid">
+    <div class="row col-12">
+      <a href="/" class="octave-logo-link">
+        <img class="octave-logo" src="/images/octave-logo.png" alt={siteTitle} />
+      </a>
+      <div class="subscribe-container">
+        {!hideCallToAction && <CallToAction class="green">Inscription</CallToAction>}
+      </div>
+      <div class="burger-menu" id="burger-menu"></div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background-color: #6cc566;
+    padding: 2rem 0 2rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  .site-header .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .site-header .octave-logo-link {
+    text-decoration: none;
+  }
+  .site-header .burger-menu {
+    display: none;
+    background-image: url('/images/burger-menu.svg');
+    background-size: cover;
+    width: 3.2rem;
+    height: 3.2rem;
+    content: ' ';
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .site-header .subscribe-container {
+      display: none;
+    }
+    .site-header .burger-menu {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  function setupBurgerMenu() {
+    const burgerMenu = document.getElementById('burger-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    if (!burgerMenu || !mobileMenu || !closeBtn) return;
+
+    const toggleMenu = () => {
+      const shown = mobileMenu.classList.toggle('shown');
+      document.body.style.overflow = shown ? 'hidden' : 'auto';
+    };
+
+    burgerMenu.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+  }
+
+  setupBurgerMenu();
+  document.addEventListener('astro:after-swap', setupBurgerMenu);
+</script>

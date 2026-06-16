@@ -1,0 +1,19 @@
+<div class="grid-12 has-gutter paragraph-root">
+  <div class="col-2-small-1"></div>
+  <p class="col-8-small-10 paragraph">
+    <slot />
+  </p>
+  <div class="col-2-small-1"></div>
+</div>
+
+<style>
+  .paragraph-root :global(p.paragraph) {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  @media screen and (max-width: 768px) {
+    .paragraph-root :global(p.paragraph) {
+      margin-bottom: 3rem;
+    }
+  }
+</style>

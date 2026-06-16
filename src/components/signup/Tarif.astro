@@ -1,0 +1,88 @@
+---
+import Section from '../Section.astro';
+import Paragraph from '../Paragraph.astro';
+import Oli from '../Oli.astro';
+---
+
+<Section>
+  <h3>Un tarif abordable</h3>
+  <Paragraph>
+    Avec Octave, nous cherchons à mettre une alimentation saine et varié à la
+    portée du plus grand nombre. Ainsi notre service est disponible à un tarif
+    très abordable couvert par les économies réalisés grâce à des courses
+    mieux maîtrisées.
+  </Paragraph>
+  <div class="grid-12 has-gutter price-container">
+    <div class="col-3-small-2"></div>
+    <div class="col-6-small-8">
+      <p class="blue-block">
+        2 semaines d'essai
+        <br />
+        <span class="bold">gratuites</span>
+      </p>
+      <p>puis</p>
+      <div class="features-list">
+        <p class="blue-block">
+          1,5 euros par semaine <br />
+          <span class="bold">seulement</span>
+        </p>
+        <div class="content">
+          <p>Accès à toutes les fonctionnalités d'Octave</p>
+          <ul>
+            <Oli icon="check">Menus personnalisés pour la famille</Oli>
+            <Oli icon="check">Planification en quelques minutes </Oli>
+            <Oli icon="check">Recettes saines et équilibrées</Oli>
+            <Oli icon="check">Ajout de vos recettes et envies</Oli>
+            <Oli icon="check">Courses en ligne simples et rapides</Oli>
+            <Oli icon="check">Liste de courses intelligentes</Oli>
+            <Oli icon="check">Recettes expliquées pas à pas</Oli>
+            <Oli icon="check">... et bien d'autres !</Oli>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-3-small-2"></div>
+  </div>
+</Section>
+
+<style>
+  .price-container {
+    text-align: center;
+  }
+  .price-container .blue-block {
+    font-size: 2.2rem;
+    padding: 1rem 3rem;
+    color: #fff;
+    background-color: #008dd5;
+    border-radius: 0.5rem;
+    font-family: 'Josefin Slab', serif;
+  }
+  .price-container .blue-block .bold {
+    font-weight: bold;
+  }
+  .price-container .features-list .blue-block {
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin: 0;
+  }
+  .price-container .features-list .content {
+    border: 0.2rem solid #008dd5;
+    border-top: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 1.5rem;
+  }
+  .price-container .features-list .content p {
+    margin: 2rem 0;
+  }
+  .price-container .features-list .content ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  .price-container .features-list .content ul li {
+    text-align: left;
+  }
+  @media screen and (min-width: 768px) {
+    .price-container {
+      padding: 0 7rem;
+    }
+  }
+</style>

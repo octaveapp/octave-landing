@@ -1,0 +1,52 @@
+---
+import Section from '../Section.astro';
+import Paragraph from '../Paragraph.astro';
+import CallToAction from '../CallToAction.astro';
+
+const members = [
+  { avatar: '/images/gerald.jpg', firstname: 'Gérald', job: 'Produit & développement' },
+  { avatar: '/images/ag.jpg', firstname: 'Anne-Gaëlle', job: 'Diététicienne-nutritionniste' },
+];
+---
+
+<Section>
+  <h3>Une équipe de passionnés à votre service</h3>
+  <Paragraph>
+    Octave est né de la fusion de nos passions : <br />
+    cuisiner pour ceux que nous aimons et utiliser la technologie pour changer
+    le monde
+  </Paragraph>
+  <div class="grid-12 has-gutter">
+    {members.map((member) => (
+      <div class="col-4-small-all team-member">
+        <img src={member.avatar} alt="Avatar des fondateurs" />
+        <p class="firstname">{member.firstname}</p>
+        <p>{member.job}</p>
+      </div>
+    ))}
+  </div>
+  <div class="auto-grid signup-row">
+    <div class="col-1">
+      <CallToAction class="green">Contactez-nous</CallToAction>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .team-member {
+    text-align: center;
+  }
+  .team-member .firstname {
+    color: #6cc566;
+    font-family: 'Josefin Slab', serif;
+  }
+  @media screen and (max-width: 768px) {
+    .team-member {
+      margin-top: 5rem;
+    }
+  }
+  .signup-row {
+    text-align: center;
+    margin-top: 7rem;
+  }
+</style>
